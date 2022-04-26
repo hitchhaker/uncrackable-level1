@@ -9,8 +9,8 @@ pipeline {
 		stage('mobsf-scan') {
 		    steps {
 			    sh 'pip3 install mobsfscan'
-			    sh '$WORKDIR/mobsfscan app/src/main/java/sg/vantagepoint/ --sarif --output mobsfscan-result.txt'
-			    archiveArtifacts artifacts: mobsfscan-result.txt, fingerprint: true
+			    sh 'mobsfscan app/src/main/java/sg/vantagepoint/ --sarif --output mobsfscan-result.txt'
+			    archiveArtifacts artifacts: $WORKDIR/mobsfscan-result.txt, fingerprint: true
 			}
 		}
 	}
